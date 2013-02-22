@@ -330,13 +330,3 @@ public class BaseIndex {
 		this.userPwd = userPwd;
 	}
 }
-
- 
- 
-
-
-
-
-
-
-
