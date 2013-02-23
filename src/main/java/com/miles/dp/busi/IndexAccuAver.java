@@ -13,7 +13,7 @@ public class IndexAccuAver extends IndexCalculator {
 
 	@Override
 	public Map<String,String>  indexCal(String dataId,IndexDes index) {
-		// TODO Auto-generated method stub
+		// 累计平均值
 		Map<String,String> results = new HashMap<String,String>(); 
 		List<String> citys = new ArrayList<String>();
 		BaseIndex bi= new BaseIndex("MySql","jdbc:mysql://localhost:3306/mysql","miles","12345");
