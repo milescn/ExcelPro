@@ -1,21 +1,19 @@
 package com.miles.dp.util;
 
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.OutputStreamWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.text.SimpleDateFormat;
+import java.util.HashMap;
+import java.util.Map;
  
 
 public class DbConnector {
+	private String url ;
+	private String userName = "";
+	private String passWord = "";
  
     /**
  		从sqlserver 导出数据，将数据入库到oracle
@@ -81,26 +79,6 @@ public class DbConnector {
 		} catch (SQLException e) {
 			e.printStackTrace();
 		}
-        
-       
-        
-//        try {    
-//            // 1、加载驱动
-//            if("SqlServer".equals(dbType)){
-//                Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-//            }else if("Oracle".equals(dbType)){
-//                Class.forName("oracle.jdbc.driver.OracleDriver"); 
-//            }else {
-//                throw new RuntimeException("dbtype is not support or input wrong!");
-//            }    
-//            con = DriverManager.getConnection(url,userName,userPwd);
-//        } catch (ClassNotFoundException e) {
-//            e.printStackTrace();
-//            throw new RuntimeException(e);
-//        } catch (SQLException e){ 
-//            e.printStackTrace();
-//            throw new RuntimeException(e);
-//        }
         // 2、获得连接 
         if(con==null){
             throw new RuntimeException("Connection is null!");
@@ -120,7 +98,6 @@ public class DbConnector {
         try {
 			ps = con.prepareStatement(sb.toString());
 			rs =ps.executeQuery();
-	        //SimpleDateFormat sdf = new java.text.SimpleDateFormat("yyyyMMddHHmmss");
 	        while(rs.next()){
 	        	result = rs.getString(1);
 	        }
@@ -132,7 +109,37 @@ public class DbConnector {
         System.out.println("Connector链接数据库取值:"+sb.toString());
     	return Double.parseDouble(result);
     }
- 
+    
+    public Map<String,String> getLvlValue(){
+    	Connection con = null;  	
+    	PreparedStatement ps = null;
+        ResultSet rs = null;
+        Map<String,String> result = new HashMap<String,String>();
+        int result_tmp = 0;     
+        con = getConnection("MySql","jdbc:mysql://localhost:3306/mysql","miles","12345");
+        try {
+			ps = con.prepareStatement("SELECT MIN(CONVERT(cal_lvl,DECIMAL(8,0))) FROM mysql.dp_code_calreport_param");
+			rs =ps.executeQuery();
+	        while(rs.next()){
+	        	result_tmp = rs.getInt(1);
+	        }
+	        result.put("MIN", String.valueOf(result_tmp));
+	        System.out.println("Connector链接数据库取得最低计算层级:"+result_tmp);
+	        ps = con.prepareStatement("SELECT MAX(CONVERT(cal_lvl,DECIMAL(8,0))) FROM mysql.dp_code_calreport_param");
+			rs =ps.executeQuery();
+	        while(rs.next()){
+	        	result_tmp = rs.getInt(1);
+	        }
+	        result.put("MAX", String.valueOf(result_tmp));
+	        System.out.println("Connector链接数据库取得最高计算层级:"+result_tmp);
+		} catch (SQLException e) {	
+			e.printStackTrace();
+		}finally{
+            cleanup(con,ps,rs);
+		}
+    	return result;
+    	
+    }
     
  
     public  void cleanup(Connection con, Statement stmt, ResultSet rs)

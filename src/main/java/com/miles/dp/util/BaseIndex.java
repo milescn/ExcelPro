@@ -14,6 +14,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 
+import com.miles.dp.entity.BpIndexs;
 import com.miles.dp.entity.IndexDes;
 
 
@@ -272,7 +273,7 @@ public class BaseIndex {
 	public  Map<Object,Object> sortByValue(Map<Object,Object> map) { 
 
 
-		//将键值赌赢的entryset放到链表中
+		//将键值的entryset放到链表中
 		 List<Object> list = new LinkedList<Object>(map.entrySet());
 		 Collections.sort(list, new Comparator() { 
 		 //将链表按照值得从大到小进行排序 
@@ -289,6 +290,46 @@ public class BaseIndex {
 			 } 
 		 return result; 
 		 } 
+	
+	public BpIndexs getBpIndexs(){
+		BpIndexs bpIndexs = new BpIndexs();
+		List<IndexDes> allIndex = new ArrayList<IndexDes>();
+		DbConnector dc =  new DbConnector();
+		Connection con = null;  	
+      	PreparedStatement ps = null;
+        ResultSet rs = null;
+        
+        String sql = "SELECT index_Id,index_Type,index_Name,formula,related_indicators,index_Order,is_City,cal_Lvl FROM mysql.dp_code_calreport_param";
+        StringBuffer sb = new StringBuffer(sql);
+        con = dc.getConnection(dbType,url,userName,userPwd);
+        try {
+			ps = con.prepareStatement(sb.toString());
+			rs =ps.executeQuery();
+			while (rs.next()){
+				IndexDes indexDes = new IndexDes();
+				indexDes.setIndexId(rs.getString(1));
+				indexDes.setIndexType(rs.getString(2));
+				indexDes.setIndexName(rs.getString(3));
+				indexDes.setFormula(rs.getString(4));
+				indexDes.setIndicators(rs.getString(5));
+				indexDes.setIndexOrder(String.valueOf(rs.getInt(6)));
+				indexDes.setIsCity(rs.getString(7));
+				indexDes.setCalLvl(rs.getString(8));
+				
+				allIndex.add(indexDes);
+			}
+			bpIndexs.setAllIndex(allIndex);
+			Map<String,String> lvl = dc.getLvlValue();
+			bpIndexs.setMaxLvl(Integer.parseInt(lvl.get("MAX")));
+			bpIndexs.setMinLvl(Integer.parseInt(lvl.get("MIN")));
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}finally{
+            dc.cleanup(con,ps,rs);
+		}
+		return bpIndexs;
+	}
 
 
 	public String getDbType() {
