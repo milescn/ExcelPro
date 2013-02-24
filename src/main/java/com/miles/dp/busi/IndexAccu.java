@@ -25,6 +25,6 @@ public class IndexAccu extends IndexCalculator {
 		DataToDb.inDb(dataId, results);
 		return results;
 	}
-
+		
 
 }
