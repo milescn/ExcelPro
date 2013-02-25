@@ -24,7 +24,7 @@ public class IndexSort extends IndexCalculator {
 			i++;
 		}
 		index_values.put(index.getIndexId()+",0000", "-");
-		DataToDb.inDb(dataId, index_values);
+		//DataToDb.inDb(dataId, index_values);
 		return index_values;
 	}
 

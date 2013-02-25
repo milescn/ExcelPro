@@ -5,6 +5,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.HashMap;
@@ -13,6 +14,7 @@ import java.util.LinkedHashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 import com.miles.dp.entity.BpIndexs;
 import com.miles.dp.entity.IndexDes;
@@ -270,15 +272,16 @@ public class BaseIndex {
 	}
 
 
-	public  Map<Object,Object> sortByValue(Map<Object,Object> map) { 
+	public  Map<Object,Object> sortByValue(Map<String,String> map) { 
 
 
 		//将键值的entryset放到链表中
-		 List<Object> list = new LinkedList<Object>(map.entrySet());
+		 Set<Map.Entry<String, String>> set = map.entrySet();
+		 List<Object> list = new LinkedList<Object>(set);
 		 Collections.sort(list, new Comparator() { 
 		 //将链表按照值得从大到小进行排序 
 			 public int compare(Object o1, Object o2) { 
-				 return ((Comparable)((Map.Entry) (o1)).getValue()).compareTo(((Map.Entry) (o2)).getValue()); 
+				 return ((Comparable)((Map.Entry<String,String>) (o1)).getValue()).compareTo(((Map.Entry<String,String>) (o2)).getValue()); 
 				 } 
 			 }); 
 

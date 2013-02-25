@@ -22,7 +22,7 @@ public class IndexNormal extends IndexCalculator {
 			for (Object city:citys){
 				results.put(index.getIndexId()+","+ (String) city,bi.getExpValue(dataId, index,(String) city) );
 			}		
-		DataToDb.inDb(dataId, results);
+		//DataToDb.inDb(dataId, results);
 		return results;
 	}
 }

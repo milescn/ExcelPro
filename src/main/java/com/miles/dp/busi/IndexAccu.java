@@ -22,7 +22,7 @@ public class IndexAccu extends IndexCalculator {
 			for (Object city:citys){
 				results.put(index.getIndexId()+","+ (String) city,bi.getAccuExpValue(dataId, index,(String) city) );
 			}		
-		DataToDb.inDb(dataId, results);
+		//DataToDb.inDb(dataId, results);
 		return results;
 	}
 		
