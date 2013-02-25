@@ -106,7 +106,7 @@ public class BaseIndex {
 
 	public Double getBaseIndex(String dataId,String Singelindex,String cityCode){
 		double result ;
-		if(Singelindex.contains("@")){
+		if(Singelindex.contains("@")||Singelindex.contains(":") ){
 			result = getIndexValueWithDim(dataId,Singelindex,cityCode);
 		}else{
 			result = getIndexValueNoDim(dataId,Singelindex,cityCode);
@@ -156,20 +156,29 @@ public class BaseIndex {
 					+ dataId +"' and index_id = '" + index + "' and city_code = '" +
 					cityCode +"'");
 		//dc.getValue(sb.toString(), dbType, url, userName, userPwd);
-		System.out.println("取数SQL："+sb.toString());
+		System.out.println("getIndexValueNoDim取数SQL："+sb.toString());
 		return dc.getValue(sb.toString(), dbType, url, userName, userPwd);
 	}
 
 
 	public double getIndexValueWithDim(String dataId,String index,String cityCode){
 		DbConnector dc = new DbConnector();	
-		String[] index_content = index.split("@");
-		StringBuffer sb = new StringBuffer();
-		sb.append("select index_value from mysql.dp_fact_calreport_data where index_id = '" + index + "' and city_code = '" +
-				cityCode +"'"+getTimest(dataId,index_content[1]));
+		if(index.contains("@")){
+			String[] index_content = index.split("@");
+			StringBuffer sb = new StringBuffer();
+			sb.append("select index_value from mysql.dp_fact_calreport_data where index_id = '" + index_content[0] + "' and city_code = '" +
+					cityCode +"'"+getTimest(dataId,index_content[1]));
 
 
-		return dc.getValue(sb.toString(), dbType, url, userName, userPwd);
+			return dc.getValue(sb.toString(), dbType, url, userName, userPwd);
+		}else {
+			String[] index_content = index.split(":");
+			StringBuffer sb = new StringBuffer();
+			sb.append("select "+"import_value"+index_content[1]+" from mysql.dp_fact_calreport_data where index_id = '" + index_content[0] + "' and city_code = '" +
+					cityCode +"' and timest = '"+ dataId + "'");
+			return dc.getValue(sb.toString(), dbType, url, userName, userPwd);
+		}
+		
 	}
 
 
