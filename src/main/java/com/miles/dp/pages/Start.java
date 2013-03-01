@@ -1,9 +1,25 @@
 package com.miles.dp.pages;
 
-public class Start {
+import org.apache.tapestry5.annotations.Property;
 
-	public String getGreeting(){
-		return "哈罗！tapestry5.3.6!!!!";
+import com.miles.dp.entity.ImportInfo;
+import com.miles.dp.enums.ImportType;
+
+public class Start {
+	@Property private ImportInfo imInfo = new ImportInfo(); 
+	@Property private String password2;
+
+	public void onSuccess() { 
+		System.out.println(imInfo); 
+		System.out.println("password2:" + password2); 
+	}
+	
+	public ImportType getCover(){ 
+		return ImportType.COVER;
+	} 
+	
+	public ImportType getNocover(){
+		return ImportType.NOCOVER;
 	}
 
 }

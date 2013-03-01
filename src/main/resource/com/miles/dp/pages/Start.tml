@@ -1,3 +1,27 @@
-<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3_6.xsd">
-	${prop:greeting}
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" >
+	<div>数据导入</div>
+	<t:form t:id="regForm" clientValidation="false">
+		 <div> 
+		 	<t:label for="dayid" /> 
+		 	<t:textfield t:id="dayid" value="imInfo.dateId" label="数据日期" /> 
+		 </div> 
+		 <div>
+		 	 <t:label for="dataTitle" />
+		 	 <t:textfield t:id="dataTitle" value="imInfo.dataTitle" label="数据名称" /> 
+		 </div> 
+		 <div> 
+		 	<t:label for="fileName" /> 
+		 	<t:textfield t:id="fileName" value="imInfo.fileName" label="数据文件" /> 
+		 </div> 
+		 <div>
+		 	<t:label for="importType" />
+		    <t:radiogroup t:id="importType" value="imInfo.importType" label="是否覆盖"> 
+			    <t:radio t:id="cover" value="cover" label="是" />
+				<t:label for="cover" />
+				<t:radio t:id="nocover" value="nocover" label="否" />
+			    <t:label for="nocover" />
+		    </t:radiogroup>
+		 </div>
+		 <input type="submit" value="上传文件" /> 
+	 </t:form>
 </html>
