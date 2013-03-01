@@ -6,8 +6,10 @@ import com.miles.dp.entity.ImportInfo;
 import com.miles.dp.enums.ImportType;
 
 public class Start {
-	@Property private ImportInfo imInfo = new ImportInfo(); 
-	@Property private String password2;
+	@Property 
+	private ImportInfo imInfo = new ImportInfo(); 
+	@Property 
+	private String password2;
 
 	public void onSuccess() { 
 		System.out.println(imInfo); 

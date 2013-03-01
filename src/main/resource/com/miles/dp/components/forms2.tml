@@ -1,0 +1,6 @@
+<html t:type="layout" title="TapeStryStart" t:sidebarTitle="FrameWork Version"
+	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	  xmlns:p="tapestry:parameter">
+用户名：${firstName}${lastName}
+<t:pagelink page="Forms1"> 返回 </t:pagelink> 
+</html>

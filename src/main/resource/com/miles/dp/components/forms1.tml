@@ -1,0 +1,10 @@
+<html t:type="layout" title="TapeStryStart" t:sidebarTitle="FrameWork Version"
+	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+	  xmlns:p="tapestry:parameter">
+<t:form id="myform" >
+	 <t:errors/> 
+	 姓：<input t:type="textfield" t:id="firstName" value="firstName"/><br/>
+	 名： <input t:type="textfield" id="lastName" value="lastName"/><br/>
+	  <input type="submit" value="提交 "/> 
+</t:form>
+</html>
