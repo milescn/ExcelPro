@@ -1,6 +1,10 @@
 <html  title="TapeStryStart" t:sidebarTitle="FrameWork Version"
 	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	  xmlns:p="tapestry:parameter">
+	  <div>
+	  		<t:Form1 />
+	  </div>
+	<!--  
 	<div>数据导入</div>
 	
 	
@@ -27,5 +31,5 @@
 		    </t:radiogroup>
 		 </div>
 		 <input type="submit" value="上传文件" /> 
-	 </t:form>
+	 </t:form> -->
 </html>
