@@ -1,0 +1,12 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd" xmlns:p="tapestry:parameter">
+ <br/>
+ <form t:type="form" t:id="myForm" t:clientValidation="none" t:autofocus="false">
+ <t:errors/>
+ <span>名字：</span>
+ <input t:type="textfield" t:id="myName" t:validate="required" />
+ <input type="submit" value="提交"/>
+ </form>
+ <p>
+我的名字是：${myName}
+ </p>
+ </html>

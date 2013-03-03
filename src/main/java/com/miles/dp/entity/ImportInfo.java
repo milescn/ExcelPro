@@ -3,11 +3,11 @@ package com.miles.dp.entity;
 import com.miles.dp.enums.ImportType;
 
 public class ImportInfo {
-	private String dateId;
-	private String isCover;
-	private String dataTitle;
-	private String fileName;
-	private ImportType importType;
+	public String dateId;
+	public String isCover;
+	public String dataTitle;
+	public String fileName;
+	public ImportType importType;
 	
 	public ImportType getImportType() {
 		return importType;

@@ -1,18 +1,38 @@
 <html  title="TapeStryStart" t:sidebarTitle="FrameWork Version"
 	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
-	  xmlns:p="tapestry:parameter">
-	  <div>
-	  		<t:Form1 />
-	  </div>
-	<!--  
+	  xmlns:p="tapestry:parameter"> 
 	<div>数据导入</div>
-	
-	
-	<t:form t:id="regForm" clientValidation="false">
+	<form t:type="form" t:id="import" t:clientValidation="none" t:autofocus="false">
+		<div>
+		<t:label for="dayid" />
+		<input t:type="textfield" t:id="dayid" value="imInfo.dateId" t:validate="required" label="数据日期" />
+		</div>
+		<div>
+		 	 <t:label for="dataTitle" />
+		 	 <input t:type="textfield" t:id="dataTitle" value="imInfo.dataTitle" t:validate="required" label="数据名称" />
+		 </div> 
 		 <div> 
+		 	<t:label for="fileName" /> 
+		 	<input  t:type="upload" t:id="fileName" value="imInfo.fileName" t:validate="required" label="数据文件" />
+		 </div> 
+		 <div>
+		 	<t:label for="importType" />
+		    <t:radiogroup t:id="importType" value="imInfo.importType" label="是否覆盖"> 
+			    <t:radio t:id="cover" value="cover" label="是" />
+				<t:label for="cover" />
+				<t:radio t:id="nocover" value="nocover" label="否" />
+			    <t:label for="nocover" />
+		    </t:radiogroup>
+		 </div> 
+ 		<input type="submit" value="上传"/>
+	</form>
+	
+	<!--
+	<t:form t:id="import" clientValidation="false">
+		  <div>  
 		 	<t:label for="dayid" /> 
 		 	<t:textfield t:id="dayid" value="imInfo.dateId" label="数据日期" /> 
-		 </div> 
+		 </div>
 		 <div>
 		 	 <t:label for="dataTitle" />
 		 	 <t:textfield t:id="dataTitle" value="imInfo.dataTitle" label="数据名称" /> 
@@ -24,12 +44,12 @@
 		 <div>
 		 	<t:label for="importType" />
 		    <t:radiogroup t:id="importType" value="imInfo.importType" label="是否覆盖"> 
-			    <t:radio t:id="cover" value="cover" label="是" />
+			    <t:radio t:id="cover" value="cover" label="l是" />
 				<t:label for="cover" />
 				<t:radio t:id="nocover" value="nocover" label="否" />
 			    <t:label for="nocover" />
 		    </t:radiogroup>
-		 </div>
+		 </div>  
 		 <input type="submit" value="上传文件" /> 
 	 </t:form> -->
 </html>

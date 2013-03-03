@@ -11,7 +11,7 @@ public class Start {
 	@Property 
 	private String password2;
 
-	public void onSuccess() { 
+	public void onSuccessFromImport() { 
 		System.out.println(imInfo); 
 		System.out.println("password2:" + password2); 
 	}
