@@ -1,0 +1,15 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_0_0.xsd">
+    <body>
+        <h1>Select Color</h1>
+
+       
+
+            <t:label for="color"/>:
+            <select t:type="select" t:id="color" value="color" model="literal:Red,Green,Blue"/>
+
+            <br/>
+
+            <input type="submit" value="Continue"/>
+
+    </body>
+</html>

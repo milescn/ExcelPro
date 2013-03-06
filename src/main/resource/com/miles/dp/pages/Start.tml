@@ -1,4 +1,4 @@
-<html  title="TapeStryStart" t:sidebarTitle="FrameWork Version"
+<html 
 	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	  xmlns:p="tapestry:parameter"> 
 
@@ -7,12 +7,13 @@
 		<div>
 		<t:label for="dayid" />
 		<input t:type="textfield" t:id="dayid" value="imInfo.dateId" t:validate="required" label="数据日期" />
-		</div>
+		</div>	
 		<div>
-		 	 <t:label for="dataTitle" />
-		 	 <input t:type="textfield" t:id="dataTitle" value="imInfo.dataTitle" t:validate="required" label="数据名称" />
-		 </div> 
-		 <div> 
+		 <t:label for="importList" />	
+		 <select t:type="select" t:id="importList"  value="imInfo.importTitles" t:model="importTitles" label="导入列表">
+		 </select> 	
+		 </div>
+		 <div>    
 		 	<t:label for="fileName" /> 
 		 	<input  t:type="upload" t:id="fileName" value="imInfo.fileName" t:validate="required" label="数据文件" />
 		 </div> 

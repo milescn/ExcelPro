@@ -1,5 +1,6 @@
 package com.miles.dp.entity;
 
+import com.miles.dp.enums.ImportTitles;
 import com.miles.dp.enums.ImportType;
 
 public class ImportInfo {
@@ -8,7 +9,14 @@ public class ImportInfo {
 	public String dataTitle;
 	public String fileName;
 	public ImportType importType;
+	public ImportTitles importTitles;
 	
+	public ImportTitles getImportTitles() {
+		return importTitles;
+	}
+	public void setImportTitles(ImportTitles importTitles) {
+		this.importTitles = importTitles;
+	}
 	public ImportType getImportType() {
 		return importType;
 	}

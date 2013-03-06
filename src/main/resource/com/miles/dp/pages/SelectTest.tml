@@ -1,0 +1,31 @@
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+ xmlns:p="tapestry:parameter">
+
+  <form t:type="form">
+   <t:label for="color0"/>:
+   <select t:type="select" t:id="color0" t:model="literal:红,黄,蓝" t:blankLabel="请选择"></select>
+   <input type="submit" value="选择"/>
+   您选择: ${color0}
+  </form>  
+<!-- 
+  <form t:type="form">
+   <t:label for="color1"/>:
+   <select t:type="select" t:id="color1" t:model="colorModel" t:encoder="stringEncoder" />
+   <input type="submit" value="选择"/>
+   您选择: ${color1}
+  </form>
+
+  <form t:type="form">
+   <t:label for="color2"/>:
+   <select t:type="select" t:id="color2" t:model="colorModel2" t:encoder="enumEncoder" t:validate="required"></select>
+   <input type="submit" value="选择"/>
+   您选择: ${color2}
+  </form>
+
+  <form t:type="form">
+   <t:label for="color3"/>:
+   <select t:type="select" t:id="color3" t:model="literal:Red,Yellow,Blue" t:validate="required" t:blankOption="ALWAYS"></select>
+   <input type="submit" value="选择"/>
+   您选择: ${color3}
+   </form>  -->
+</html>
