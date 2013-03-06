@@ -10,7 +10,7 @@
 		</div>	
 		<div>
 		 <t:label for="importList" />	
-		 <select t:type="select" t:id="importList"  value="imInfo.importTitles" t:model="importTitles" label="导入列表">
+		 <select t:type="select" t:id="importList"  value="imInfo.importTitles" t:model="importTitles" t:validate="required" label="导入列表">
 		 </select> 	
 		 </div>
 		 <div>    
