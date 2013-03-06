@@ -1,57 +1,29 @@
-<html 
-	  xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
+<html xmlns:t="http://tapestry.apache.org/schema/tapestry_5_3.xsd"
 	  xmlns:p="tapestry:parameter"> 
-
 	<div>数据导入</div>
-	<form t:type="form" t:id="import" t:clientValidation="none" t:autofocus="false">
+	<form t:type="form" t:id="import" t:clientValidation="true" t:autofocus="false">
 		<div>
-		<t:label for="dayid" />
-		<input t:type="textfield" t:id="dayid" value="imInfo.dateId" t:validate="required" label="数据日期" />
+			<t:label for="monthId" />
+			<input t:type="textfield" t:id="monthId" value="imInfo.dateId" t:validate="required" label="数据日期" />
 		</div>	
 		<div>
-		 <t:label for="importList" />	
-		 <select t:type="select" t:id="importList"  value="imInfo.importTitles" t:model="importTitles" t:validate="required" label="导入列表">
-		 </select> 	
-		 </div>
-		 <div>    
+		 	<t:label for="importList" />	
+		 	<select t:type="select" t:id="importList"  value="imInfo.importTitles" t:model="importTitles" t:validate="required" label="导入列表">
+			 </select> 	
+		</div>
+	    <div>    
 		 	<t:label for="fileName" /> 
 		 	<input  t:type="upload" t:id="fileName" value="imInfo.fileName" t:validate="required" label="数据文件" />
-		 </div> 
-		 <div>
+		</div> 
+		<div>
 		 	<t:label for="importType" />
-		    <t:radiogroup t:id="importType" value="imInfo.importType" label="是否覆盖"> 
+		    <t:radiogroup t:id="importType" value="imInfo.importType"  t:validate="notnone"  label="是否覆盖"> 
 			    <t:radio t:id="cover" value="cover" label="是" />
 				<t:label for="cover" />
 				<t:radio t:id="nocover" value="nocover" label="否" />
 			    <t:label for="nocover" />
 		    </t:radiogroup>
 		 </div> 
- 		<input type="submit" value="上传"/>
+ 		 <input type="submit" value="上传"/>
 	</form>
-	
-	<!--
-	<t:form t:id="import" clientValidation="false">
-		  <div>  
-		 	<t:label for="dayid" /> 
-		 	<t:textfield t:id="dayid" value="imInfo.dateId" label="数据日期" /> 
-		 </div>
-		 <div>
-		 	 <t:label for="dataTitle" />
-		 	 <t:textfield t:id="dataTitle" value="imInfo.dataTitle" label="数据名称" /> 
-		 </div> 
-		 <div> 
-		 	<t:label for="fileName" /> 
-		 	<t:textfield t:id="fileName" value="imInfo.fileName" label="数据文件" /> 
-		 </div> 
-		 <div>
-		 	<t:label for="importType" />
-		    <t:radiogroup t:id="importType" value="imInfo.importType" label="是否覆盖"> 
-			    <t:radio t:id="cover" value="cover" label="l是" />
-				<t:label for="cover" />
-				<t:radio t:id="nocover" value="nocover" label="否" />
-			    <t:label for="nocover" />
-		    </t:radiogroup>
-		 </div>  
-		 <input type="submit" value="上传文件" /> 
-	 </t:form> -->
 </html>
