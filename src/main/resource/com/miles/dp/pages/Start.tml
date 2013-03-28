@@ -4,7 +4,7 @@
 	<form t:type="form" t:id="import" t:clientValidation="true" t:autofocus="false">
 		<div>
 			<t:label for="monthId" />
-			<input t:type="textfield" t:id="monthId" value="imInfo.dateId" t:validate="required" label="数据日期" />
+			<input t:type="textfield" t:id="monthId" value="imInfo.dateId" t:validate="required,minlength=6,maxlength=6,regexp=\d{4}((0[1-9])|(1[0-2]))" label="数据日期" />
 		</div>	
 		<div>
 		 	<t:label for="importList" />	
@@ -12,12 +12,12 @@
 			 </select> 	
 		</div>
 	    <div>    
-		 	<t:label for="fileName" /> 
-		 	<input  t:type="upload" t:id="fileName" value="imInfo.fileName" t:validate="required" label="数据文件" />
+		 	<t:label for="file" /> 
+		 	<input  t:type="upload" t:id="file" value="imInfo.fileName" t:validate="required" label="数据文件" />
 		</div> 
 		<div>
 		 	<t:label for="importType" />
-		    <t:radiogroup t:id="importType" value="imInfo.importType"  t:validate="notnone"  label="是否覆盖"> 
+		    <t:radiogroup t:id="importType" value="imInfo.importType"   label="是否覆盖"> 
 			    <t:radio t:id="cover" value="cover" label="是" />
 				<t:label for="cover" />
 				<t:radio t:id="nocover" value="nocover" label="否" />

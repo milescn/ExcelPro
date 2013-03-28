@@ -49,10 +49,10 @@ public class UploadDetail {
  
 	public void uploadImage(){
 		// 文件保存目录路径
-		String savePath = applicationGlobals.getServletContext().getRealPath("/uploadImages/") + "\\";
+		String savePath = applicationGlobals.getServletContext().getRealPath("/upload/") + "\\";
 		 
 		// 文件保存目录URl地址
-		String saveUrl = getRequest().getContextPath() + "/uploadImages/";
+		String saveUrl = getRequest().getContextPath() + "/upload/";   ///uploadImages
 		 
 		 
 		//最大文件大小
@@ -72,7 +72,7 @@ public class UploadDetail {
 		}
 		 
 		//文件夹名
-		String dirName = "uploadData";
+		String dirName = "bluePaper";
 		// 创建文件夹
 		savePath += dirName + "/";
 		saveUrl += dirName + "/";
